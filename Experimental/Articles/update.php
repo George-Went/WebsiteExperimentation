@@ -37,7 +37,7 @@
          ?>
          <form method="post" action="update.php">
          Title:<br>
-         <input type="text" name="title" value=<?php   ?> >
+         <input type="text" name="title" value=<?php echo showIdData($title) // how do i get title var ;-; ?> >
          <br>
          Author:<br>
          <input type="text" name="author" <?php echo showIdData().$author; ?>>

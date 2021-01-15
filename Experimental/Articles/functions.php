@@ -1,6 +1,13 @@
 <?php
 include "config.php";
 
+ 
+
+// All of the below functions still rely on a form to function, however instead
+// of the form sending a instuction to a php script via an "action=", the php 
+// code waits for a trigger to be pulled via the  if(isset($_POST['submit_id']))
+
+
 // ---------------------------------------------------------------------------
 // DISPLAY ALL DATA 
 // ---------------------------------------------------------------------------
@@ -39,7 +46,7 @@ function showAllData() {
 function showId() {
    // takes data from a database and displays certian rows based on the 'id' selected
       global $connection; // alllows $connection to be used across config.php and functions.php
-      $query = "SELECT * FROM Contacts";
+      $query = "SELECT * FROM articles";
    
       $result = mysqli_query($connection, $query);// sends sql query to database 
    
@@ -60,15 +67,14 @@ function showId() {
 // ---------------------------------------------------------------------------
 function showIdData() {
 
-   // $id = $_POST['id'];
-   // echo id;
+   
 global $connection; // alllows $connection to be used across config.php and functions.php
    if(isset($_POST['submit_id']))  // if the submit value 'save' is selected (is submit button pressed)
    {
          
       $id = $_POST['id'];
 
-      $query = "SELECT * FROM Contacts WHERE id = '$id' ";
+      $query = "SELECT * FROM articles WHERE id = '$id' ";
    
       $result = mysqli_query($connection, $query);// sends sql query to database 
    
@@ -85,12 +91,18 @@ global $connection; // alllows $connection to be used across config.php and func
          $date_created = $row['date_created'];
          
          echo $id . " ";
-         echo $first_name . " ";
-         echo $last_name . " ";
-         echo $city_name . " ";
-         echo $email . " ";
-         echo "<br>";
+         echo $title . " ";
+         echo $author . " ";
+         echo $content . " ";
+         echo $date_created . " ";
+         echo "end of 'ShowIdData";
+         echo "</br>";
+
+         // function show_title() {
+         //    return $title;
+         // }
    
+         
       } 
    }
 }
@@ -150,14 +162,12 @@ function updateRow() {
       $content = $row['content'];
       $date_created = $row['date_created'];
 
-      $first_name = mysqli_real_escape_string($connection, $first_name);
-      $last_name = mysqli_real_escape_string($connection, $last_name);
-      $city_name = mysqli_real_escape_string($connection, $city_name);
-      $email = mysqli_real_escape_string($connection, $email);
+      $title = mysqli_real_escape_string($connection, $title);
+      $author = mysqli_real_escape_string($connection, $author);
+      $content = mysqli_real_escape_string($connection, $content);
 
-
-      $query = "INSERT INTO Contacts(first_name, last_name, city_name, email) ";
-      $query .= "VALUES ('$first_name', '$last_name', '$city_name', '$email')"; // .= concatonates (adds on the end) onto existing values (same as += in js)
+      $query = "INSERT INTO articles(title, author, content) ";
+      $query .= "VALUES ('$title', '$author', '$content')"; // .= concatonates (adds on the end) onto existing values (same as += in js)
 
       echo $query;
 
@@ -178,7 +188,7 @@ function deleteRows() {
    $id = $_POST['id'];
 
    // building sql query 
-   $query = "DELETE FROM users  ";
+   $query = "DELETE FROM articles  ";
    $query .= "WHERE id = '$id' ";
 
    echo $query;

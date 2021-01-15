@@ -22,7 +22,7 @@ $sql = "CREATE TABLE IF NOT EXISTS $table_name (
   	`title` varchar(255) NOT NULL,
   	`author` varchar(255) NOT NULL,
   	`content` varchar(255) NOT NULL,
-  	`created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  	`date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (`id`)
 )";
 

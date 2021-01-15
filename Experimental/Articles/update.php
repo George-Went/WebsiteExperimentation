@@ -20,7 +20,7 @@
 
       <div class = form>
          <form method=post action=update.php>
-         User: 
+         Article: 
          <select name="id" id="id">
             <!-- <option value="id" selected="selected">Select User</option> -->
             <?php
@@ -30,24 +30,24 @@
          <input type="submit" name="submit_id" value="view">
       </div>
 
+      <br>
       <div class="form">
          <?php
             showIdData();
          ?>
          <form method="post" action="update.php">
-         First name:<br>
-         <input type="text" name="first_name" value="<?php echo $first_name;?>">
+         Title:<br>
+         <input type="text" name="title" value=<?php   ?> >
          <br>
-         Last name:<br>
-         <input type="text" name="last_name" value="">
+         Author:<br>
+         <input type="text" name="author" <?php echo showIdData().$author; ?>>
          <br>
-         City name:<br>
-         <input type="text" name="city_name" value="">
+         Content:<br>
+         <textarea type="text" name="content" rows="1" cols="35">
+         </textarea>
          <br>
-         Email:<br>
-         <input type="email" name="email" value=""> 
          <br><br>
-         <input type="submit" name="save" value="update">
+         <input type="submit" name="save" value="submit">
       </div>
       
 

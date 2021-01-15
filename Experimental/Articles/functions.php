@@ -41,6 +41,29 @@ function showAllData() {
 }
 
 // ---------------------------------------------------------------------------
+// GET ARRAY OF ALL DATA 
+// ---------------------------------------------------------------------------
+function getAllData() {
+// takes data from a database and displays certian rows based on the 'id' selected
+   global $connection; // alllows $connection to be used across config.php and functions.php
+   $query = "SELECT * FROM articles";
+
+   $result = mysqli_query($connection, $query);// sends sql query to database 
+
+   if(!$result){
+      die("query failed" . mysqli_error($connection));    // If the result fails, stop it (die) and send a error message 
+   }
+
+   $items = [];
+ 
+   while($row = mysqli_fetch_assoc($result)){   // $row = fetch assosiative array of $result = query of 'SELECT * FROM users"
+      $items[] = $row;
+   }
+ 
+   return $items;
+}
+
+// ---------------------------------------------------------------------------
 // DISPLAY ID'S
 // ---------------------------------------------------------------------------
 function showId() {

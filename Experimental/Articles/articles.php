@@ -17,7 +17,8 @@
       <li><a href="update.php"><strong>Update</strong></a> - edit a user</li>
       <li><a href="delete.php"><strong>Delete</strong></a> - delete a user</li>
 
-
+      <h3>Alternate form design </h3>
+      <li><a href="alternateForm.php"><strong>Alternate Form Design</strong></a> - Another way of managing database data</li>
 
       
 
@@ -29,7 +30,7 @@
       <li><a href="scripts/insert.php"><strong>Insert Data</strong></a> - insert data into a table</li>
       <li><a href="scripts/deleteDB.php"><strong>Delete Database</strong></a> - Delete the database</li>
       <li><a href="scripts/deleteTable.php"><strong>Delete Table</strong></a> - Delete the table</li>
-      <li><a href="scripts/checkDB.php"><strong>check</strong></a> - check if the database and table exist</li>
+      <li><a href="scripts/checkDB.php"><setrong>check</strong></a> - check if the database and table exist</li>
       
       <?php
             include "config.php";    // Connect to database script

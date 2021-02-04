@@ -13,18 +13,18 @@ if ($conn->connect_error) {
     echo "Connection";
 }
 /* Create database */
-$sql = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'articles'";
+$sql = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'articlesDB'";
    
 if ($conn->query($sql) === TRUE) {
       echo "Database Exists";
 }
 else
 {
-   echo "No database found with name: articles";
+   echo "No database found with name: articlesDB";
    echo "<br>";
    echo "Error: " . $conn->error;
 }
-$sql = "SHOW DATABASES LIKE 'articles'";
+$sql = "SHOW DATABASES LIKE 'articlesDB'";
    
 
 if ($conn->query($sql) === TRUE) {

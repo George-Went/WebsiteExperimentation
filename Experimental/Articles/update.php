@@ -33,24 +33,30 @@
       <br>
       <div class="form">
          <?php
-            showIdData();
+            $idData = showIdData(); // import id data into variable $idData (this is an array)
+            print_r($idData);
+            echo $idData[0]['id'] . "</br>";
+            echo $idData[0]['author'] . "</br>";
+            echo $idData[0]['title'] . "</br>";
+            echo $idData[0]['content'] . "</br>";
+            echo "<br>";
          ?>
          <form method="post" action="update.php">
          Title:<br>
-         <input type="text" name="title" value=<?php echo showIdData($title) // how do i get title var ;-; ?> >
+         <input type="text" name="title" value=<?php echo $idData[0]['title'] ?> >
          <br>
          Author:<br>
-         <input type="text" name="author" <?php echo showIdData().$author; ?>>
+         <input type="text" name="author" value=<?php echo $idData[0]['author']?>>
          <br>
          Content:<br>
-         <textarea type="text" name="content" rows="1" cols="35">
+         <textarea type="text" name="content" rows="1" cols="35" value=<?php echo $idData[0]['content']?>>
          </textarea>
+         
          <br>
          <br><br>
          <input type="submit" name="save" value="submit">
       </div>
       
-
    </div>  
 </body>
 

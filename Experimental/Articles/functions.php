@@ -41,6 +41,30 @@ function showAllData() {
 }
 
 // ---------------------------------------------------------------------------
+// GET ARRAY OF ALL DATA 
+// ---------------------------------------------------------------------------
+function getAllData() {
+// takes data from a database and displays certian rows based on the 'id' selected
+   global $connection; // alllows $connection to be used across config.php and functions.php
+   $query = "SELECT * FROM articles";
+
+   $result = mysqli_query($connection, $query);// sends sql query to database 
+
+   if(!$result){
+      die("query failed" . mysqli_error($connection));    // If the result fails, stop it (die) and send a error message 
+   }
+
+   $items = [];
+   
+   while($row = mysqli_fetch_assoc($result)){   // $row = fetch assosiative array of $result = query of 'SELECT * FROM users"
+      $items[] = $row;
+   }
+   
+   return $items;
+}
+   
+
+// ---------------------------------------------------------------------------
 // DISPLAY ID'S
 // ---------------------------------------------------------------------------
 function showId() {
@@ -71,9 +95,7 @@ function showIdData() {
 global $connection; // alllows $connection to be used across config.php and functions.php
    if(isset($_POST['submit_id']))  // if the submit value 'save' is selected (is submit button pressed)
    {
-         
       $id = $_POST['id'];
-
       $query = "SELECT * FROM articles WHERE id = '$id' ";
    
       $result = mysqli_query($connection, $query);// sends sql query to database 
@@ -82,28 +104,13 @@ global $connection; // alllows $connection to be used across config.php and func
          die("query failed" . mysqli_error($connection));    // If the result fails, stop it (die) and send a error message 
       }
    
+      $selectedData = []; // Create a empty array
+
       while($row = mysqli_fetch_assoc($result)){   // $row = fetch assosiative array of $result = query of 'SELECT * FROM users"
                                                    // the array is a row of data - this is looped until the database returns no more rows 
-         $id = $row['id'];                        
-         $title = $row['title'];  
-         $author = $row['author'];
-         $content = $row['content'];
-         $date_created = $row['date_created'];
-         
-         echo $id . " ";
-         echo $title . " ";
-         echo $author . " ";
-         echo $content . " ";
-         echo $date_created . " ";
-         echo "end of 'ShowIdData";
-         echo "</br>";
-
-         // function show_title() {
-         //    return $title;
-         // }
-   
-         
-      } 
+         $items[] = $row;         
+      }  
+      return $items;
    }
 }
 
